@@ -1,0 +1,91 @@
+{
+  "usuarios": [
+    {
+      "matricula": "12345",
+      "nome": "Maria Silva",
+      "data_nascimento": "1990-02-10",
+      "cursos": [
+        {
+          "nome": "engenharia de software",
+          "turno": "Manhã",
+          "coordenador": 
+            {
+                "nome" :"Leandro Xavier",
+                "horario":"14:30 às 18:30",
+                "email":"leandro@gmail.com.br",
+                "unidade": "Maracanã",
+                "foto":"https://img.freepik.com/fotos-gratis/empresario-experiente-na-sala-de-escritorio-funcionario-de-escritorio-de-conteudo-indiano-em-oculos-sorrindo-e-posando-com-as-maos-postas-conceito-de-negocios-gestao-e-corporacao_74855-11681.jpg?w=1380&t=st=1704820984~exp=1704821584~hmac=7df555be7a6917d4b0aebc1ead9d780f300e9d607b8b22dc131871f841b3034f"
+            },
+          "materias": [
+            {
+              "nome": "programação 1",
+              "horario": "08:00 às 10:00",
+              "dia_semana": "segunda-feira",
+              "sala": "101",
+              "professor": "João da Silva",
+              "notas": {
+                "a1": 10.0,
+                "a2": 9.5,
+                "a3": 0.0,
+                "media": 10.0
+              }
+            },
+            {
+              "nome": "banco de dados",
+              "horario": "10:00 às 12:00",
+              "dia_semana": "quarta-feira",
+              "sala": "102",
+              "professor": "Maria Santos",
+              "notas": {
+                "a1": 8.0,
+                "a2": 9.5,
+                "a3": 0.0,
+                "media": 9.0
+              }
+            }
+          ]
+        },
+        {
+          "nome": "administração",
+          "turno": "Noite",
+          "coordenador": 
+            {
+                "nome" :"Douglas Castilho",
+                "horario":"14:30 às 18:30",
+                "email":"douglas@gemail.com.br",
+                "unidade": "Tijuca",
+                "foto":"https://img.freepik.com/fotos-gratis/retrato-de-homem-negocios-sorrindo_23-2150771049.jpg?w=1380&t=st=1704820923~exp=1704821523~hmac=42b4d208b8961a6091ba28e2b03b91d5f467242704382c2c757d2412892801fe"
+            },
+          "materias": [
+            {
+              "nome": "gestão de pessoas",
+              "horario": "19:00 às 21:00",
+              "dia_semana": "terça-feira",
+              "sala": "201",
+              "professor": "Ana Souza",
+              "notas": {
+                "a1": 8.0,
+                "a2": 7.5,
+                "a3": 0.0,
+                "media": 6.0
+              }
+            },
+            {
+              "nome": "contabilidade",
+              "horario": "21:00 às 23:00",
+              "dia_semana": "segunda-feira",
+              "sala": "202",
+              "professor": "Carlos Oliveira",
+              "notas": {
+                "a1": 0.0,
+                "a2": 9.5,
+                "a3": 6.0,
+                "media": 8.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
