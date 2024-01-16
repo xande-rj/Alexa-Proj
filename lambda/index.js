@@ -313,26 +313,15 @@ const HorarioCoordenadorIntentHandler = {
 
         try {
             const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const diaMaisProximovar = diaMaisProximo(coordenador.data);
-            //const coordenadorMaisProximo = diaMaiscoordenadorProximo(coordenador);
-
-            // function obterDiaSemanaExtenso(abreviacao) {
-            //     const diasDaSemanaExtenso = {
-            //         'DOM': 'Domingo',
-            //         'SEG': 'Segunda-feira',
-            //         'TER': 'Terça-feira',
-            //         'QUA': 'Quarta-feira',
-            //         'QUI': 'Quinta-feira',
-            //         'SEX': 'Sexta-feira',
-            //         'SAB': 'Sábado'
-            //     };
-
-            //     return diasDaSemanaExtenso[abreviacao] || 'Desconhecido';
-            // }
-
-            const speakOutput = `${diaMaisProximovar}.`;
-            //const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaMaisProximo}.`;
-
+            
+            console.log('Dados do coordenador:', coordenador);
+    
+            const diaMaisProximoVar = diaMaisProximo(coordenador);
+    
+            console.log('Dia mais próximo:', diaMaisProximoVar);
+    
+            const speakOutput = `${diaMaisProximoVar}.`;
+            
             exibirTelaCoordenador(handlerInput);
 
             return handlerInput.responseBuilder
