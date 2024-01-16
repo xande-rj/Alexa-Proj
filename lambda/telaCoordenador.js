@@ -5,7 +5,7 @@ const DOCUMENT_ID = "telaCoordenador";
 const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuarios = JSON.parse(data).usuarios;
-const filtrarCurso = require('./filterUser.js');
+const filtrarCurso = require('./filterdiacoordenador.js');
 
 function exibirTelaCoordenador(handlerInput){
     

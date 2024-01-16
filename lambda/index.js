@@ -12,7 +12,7 @@ const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
 const filtrarNotas = require('./filterNotas.js');
-const diaECoordenadorMaisProximo = require('./filterUser.js');
+const diaMaisProximo = require('./filterdiacoordenador.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -313,7 +313,8 @@ const HorarioCoordenadorIntentHandler = {
 
         try {
             const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const { diaMaisProximo, coordenadorMaisProximo } = diaECoordenadorMaisProximo(coordenador);
+            const diaMaisProximovar = diaMaisProximo(coordenador);
+            //const coordenadorMaisProximo = diaMaiscoordenadorProximo(coordenador);
 
             // function obterDiaSemanaExtenso(abreviacao) {
             //     const diasDaSemanaExtenso = {
@@ -329,7 +330,8 @@ const HorarioCoordenadorIntentHandler = {
             //     return diasDaSemanaExtenso[abreviacao] || 'Desconhecido';
             // }
 
-            const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaMaisProximo}.`;
+            const speakOutput = `${diaMaisProximovar}.`;
+            //const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaMaisProximo}.`;
 
             exibirTelaCoordenador(handlerInput);
 
