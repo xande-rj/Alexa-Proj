@@ -312,26 +312,25 @@ const HorarioCoordenadorIntentHandler = {
     async handle(handlerInput) {
 
         try {
-            const dados_coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const {diaMaisProximo,coordenadorMaisProximo }= diaECoordenadorMaisProximo(dados_coordenador.data);
+            const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+            const { diaMaisProximo, coordenadorMaisProximo } = diaECoordenadorMaisProximo(coordenador);
 
-            function obterDiaSemanaExtenso(abreviacao) {
-                const diasDaSemanaExtenso = {
-                    'DOM': 'Domingo',
-                    'SEG': 'Segunda-feira',
-                    'TER': 'Terça-feira',
-                    'QUA': 'Quarta-feira',
-                    'QUI': 'Quinta-feira',
-                    'SEX': 'Sexta-feira',
-                    'SAB': 'Sábado'
-                };
-            
-                return diasDaSemanaExtenso[abreviacao] || 'Desconhecido';
-            }
-            const diaExtenso = obterDiaSemanaExtenso(diaMaisProximo)
+            // function obterDiaSemanaExtenso(abreviacao) {
+            //     const diasDaSemanaExtenso = {
+            //         'DOM': 'Domingo',
+            //         'SEG': 'Segunda-feira',
+            //         'TER': 'Terça-feira',
+            //         'QUA': 'Quarta-feira',
+            //         'QUI': 'Quinta-feira',
+            //         'SEX': 'Sexta-feira',
+            //         'SAB': 'Sábado'
+            //     };
 
-            const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaExtenso}.`;
-            
+            //     return diasDaSemanaExtenso[abreviacao] || 'Desconhecido';
+            // }
+
+            const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaMaisProximo}.`;
+
             exibirTelaCoordenador(handlerInput);
 
             return handlerInput.responseBuilder
@@ -340,7 +339,7 @@ const HorarioCoordenadorIntentHandler = {
                 .getResponse();
 
         } catch (error) {
-            const speakOutput = 'Houve um erro no servidor.';
+            const speakOutput = 'Houve um erro no servidor.' + error;
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
