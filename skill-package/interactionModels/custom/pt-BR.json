@@ -1,0 +1,253 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "slots": [
+            {
+              "name": "diaSemana",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "name": "AulaIntent",
+          "samples": [
+            "qual aula terei na {diaSemana}",
+            "aulas que terei na {diaSemana}",
+            "aula que terei na {diaSemana}",
+            "quais aulas terei na {diaSemana}",
+            "aulas de {diaSemana}",
+            "quais aulas são {diaSemana}",
+            "aula {diaSemana}",
+            "aula de {diaSemana}",
+            "aulas {diaSemana}",
+            "que aula tenho {diaSemana}",
+            "quais aulas tenho {diaSemana}",
+            "que aula tenho na proxima {diaSemana}",
+            "que aula tenho no proximo {diaSemana}",
+            "quais aulas tenho na proxima {diaSemana}",
+            "quais aulas tenho no próximo {diaSemana}",
+            "que aula tenho na {diaSemana}",
+            "que aula terei no {diaSemana}",
+            "aula que tenho {diaSemana}",
+            "aulas que tenho {diaSemana}",
+            "aulas que terei {diaSemana}",
+            "aula que terei {diaSemana}",
+            "qual aula terei no {diaSemana}",
+            "qual aula terei {diaSemana}",
+            "quais aulas terei no {diaSemana}",
+            "aula que terei no {diaSemana}",
+            "aulas que terei no {diaSemana}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "diaSemanaPas",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "name": "AulaPassadoIntent",
+          "samples": [
+            "que aula eu tive {diaSemanaPas}",
+            "que aulas eu tive {diaSemanaPas}",
+            "quais aulas eu tive {diaSemanaPas}",
+            "que aula tive {diaSemanaPas}",
+            "que aulas tive na {diaSemanaPas}",
+            "que aulas tive {diaSemanaPas}",
+            "que aula tive no {diaSemanaPas}",
+            "quais aulas tive {diaSemanaPas}",
+            "quais aulas tive no {diaSemanaPas}",
+            "aula que tive {diaSemanaPas}",
+            "quais aulas que tive {diaSemanaPas}",
+            "aulas que tive no {diaSemanaPas}",
+            "aula  que tive no {diaSemanaPas}",
+            "aula que eu tive na {diaSemanaPas} passada",
+            "aula que tive no {diaSemanaPas} passado",
+            "que aulas tive {diaSemanaPas} passada",
+            "quais aulas tive {diaSemanaPas} passada ",
+            "que aulas tive {diaSemanaPas} passado",
+            "que aula tive {diaSemanaPas} passado",
+            "quais aulas tive {diaSemanaPas} passado",
+            "{diaSemanaPas} tive aula de que ",
+            "{diaSemanaPas} tive que aula ",
+            "{diaSemanaPas} tive quais aulas ",
+            "{diaSemanaPas} tive que aulas ",
+            "{diaSemanaPas} tive aulas de que ",
+            "{diaSemanaPas} quais aulas eu tive ",
+            "{diaSemanaPas} que aulas eu tive",
+            "{diaSemanaPas} que aula tive ",
+            "{diaSemanaPas} que aulas tive ",
+            "{diaSemanaPas} quais aulas tive "
+          ]
+        },
+        {
+          "slots": [],
+          "name": "HorarioCoordenadorIntent",
+          "samples": [
+            "horário coordenadora",
+            "horário coordenação",
+            "horário coordenador",
+            "disponibilidade coordenadora",
+            "disponibilidade coordenação",
+            "disponibilidade coordenador",
+            "data coordenadora",
+            "data coordenação",
+            "data coordenador",
+            "agenda coordenadora",
+            "agenda coordenação",
+            "agenda coordenador",
+            "coordenadora",
+            "coordenação",
+            "coordenador",
+            "quando posso falar com a coordenadora",
+            "quando posso falar com a coordenador",
+            "quando posso falar com o coordenador",
+            "horário do coordenadora",
+            "horário da coordenação",
+            "horário do coordenador",
+            "disponibilidade da coordenadora",
+            "disponibilidade da coordenação",
+            "disponibilidade do coordenador",
+            "data da coordenadora",
+            "data da coordenação",
+            "data do coordenador",
+            "agenda da coordenadora",
+            "agenda da coordenação",
+            "agenda do coordenador",
+            "como posso falar com a coordenadora",
+            "como posso falar com a coordenação",
+            "como posso falar com o coordenador",
+            "qual o horário da coordenadora",
+            "qual o horário da coordenação",
+            "qual o horário do coordenador",
+            "qual a data da coordenadora",
+            "qual a data da coordenação",
+            "qual a data do coordenador",
+            "qual a disponibilidade da coordenadora",
+            "qual a disponibilidade da coordenação",
+            "qual a disponibilidade do coordenador",
+            "qual a agenda da coordenadora",
+            "qual a agenda do coordenador",
+            "qual a agenda da coordenação",
+            "horário coordenadora do curso",
+            "horário coordenação do curso",
+            "horário coordenador do curso",
+            "disponibilidade coordenadora do curso",
+            "disponibilidade coordenação do curso",
+            "disponibilidade coordenador do curso",
+            "data coordenadora do curso",
+            "data coordenação do curso",
+            "data coordenador do curso",
+            "agenda coordenadora do curso",
+            "agenda coordenação do curso",
+            "agenda coordenador do curso",
+            "coordenadora do curso",
+            "coordenação do curso",
+            "coordenador do curso",
+            "quando posso falar com a coordenadora do curso",
+            "quando posso falar com a coordenador do curso",
+            "quando posso falar com o coordenador do curso",
+            "horário do coordenadora do curso",
+            "horário da coordenação do curso",
+            "horário do coordenador do curso",
+            "disponibilidade da coordenadora do curso",
+            "disponibilidade da coordenação do curso",
+            "disponibilidade do coordenador do curso",
+            "data da coordenadora do curso",
+            "data da coordenação do curso",
+            "data do coordenador do curso",
+            "agenda da coordenadora do curso",
+            "agenda da coordenação do curso",
+            "agenda do coordenador do curso",
+            "como posso falar com a coordenadora do curso",
+            "como posso falar com a coordenação do curso",
+            "como posso falar com o coordenador do curso",
+            "qual o horário da coordenadora do curso",
+            "qual o horário da coordenação do curso",
+            "qual o horário do coordenador do curso",
+            "qual a data da coordenadora do curso",
+            "qual a data da coordenação do curso",
+            "qual a data do coordenador do curso",
+            "qual a disponibilidade da coordenadora do curso",
+            "qual a disponibilidade da coordenação do curso",
+            "qual a disponibilidade do coordenador do curso",
+            "qual a agenda da coordenadora do curso",
+            "qual a agenda do coordenador do curso",
+            "qual a agenda da coordenação do curso"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "PosGraduacaoIntent",
+          "samples": [
+            "pós graduação da universidade unisuam",
+            "pós da universidade unisuam",
+            "cursos de pós da universidade unisuam",
+            "os cursos de pós da universidade unisuam",
+            "quais os cursos de pós da universidade unisuam",
+            "quais são os cursos de pós da universidade unisuam",
+            "cursos de pós graduação da universidade unisuam",
+            "os cursos de pós graduação da universidade unisuam",
+            "quais os cursos de pós graduação da universidade unisuam",
+            "quais são os cursos de pós graduação da universidade unisuam"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "MestradoIntent",
+          "samples": [
+            "mestrado da universidade unisuam",
+            "cursos de mestrado da universidade unisuam",
+            "os cursos de mestrado da universidade unisuam",
+            "quais os cursos de mestrado da universidade unisuam",
+            "quais são os cursos de mestrado da universidade unisuam",
+            "cursos de mestrado da universidade universidade unisuam"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "InscricaoIntent",
+          "samples": [
+            "ingressar na universidade unisuam",
+            "inscrever-se na universidade unisuam",
+            "entrar na universidade unisuam",
+            "como eu ingressar na universidade unisuam",
+            "como eu entro na universidade unisuam",
+            "como eu me inscrevo na universidade unisuam",
+            "como eu entro na universidade universidade unisuam",
+            "como eu me inscrevo na universidade universidade unisuam"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "notasMateriasIntent",
+          "samples": [
+            "minhas notas"
+          ]
+        }
+      ],
+      "types": [],
+      "invocationName": "entra unisuam"
+    }
+  }
+}

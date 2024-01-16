@@ -12,7 +12,7 @@ const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
 const filtrarNotas = require('./filterNotas.js');
-const filtrarCurso = require('./filterUser.js');
+const diaECoordenadorMaisProximo = require('./filterUser.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -313,8 +313,25 @@ const HorarioCoordenadorIntentHandler = {
 
         try {
             const dados_coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const coordenador = filtrarCurso(dados_coordenador.data, handlerInput);
-            const speakOutput = `O coordenador ${dados_coordenador.data.nome} está disponível na unidade ${coordenador.descricao} todas as segundas e sextas, das ${coordenador.coordenador.horario}.`;
+            const {diaMaisProximo,coordenadorMaisProximo }= diaECoordenadorMaisProximo(dados_coordenador.data);
+
+            function obterDiaSemanaExtenso(abreviacao) {
+                const diasDaSemanaExtenso = {
+                    'DOM': 'Domingo',
+                    'SEG': 'Segunda-feira',
+                    'TER': 'Terça-feira',
+                    'QUA': 'Quarta-feira',
+                    'QUI': 'Quinta-feira',
+                    'SEX': 'Sexta-feira',
+                    'SAB': 'Sábado'
+                };
+            
+                return diasDaSemanaExtenso[abreviacao] || 'Desconhecido';
+            }
+            const diaExtenso = obterDiaSemanaExtenso(diaMaisProximo)
+
+            const speakOutput = `O coordenador ${coordenadorMaisProximo.nome} está disponível na unidade ${coordenadorMaisProximo.quadroHorario[0].descricao} no dia ${diaExtenso}.`;
+            
             exibirTelaCoordenador(handlerInput);
 
             return handlerInput.responseBuilder
