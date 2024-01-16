@@ -313,7 +313,7 @@ const HorarioCoordenadorIntentHandler = {
 
         try {
             const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const diaMaisProximovar = diaMaisProximo(coordenador);
+            const diaMaisProximovar = diaMaisProximo(coordenador.data);
             //const coordenadorMaisProximo = diaMaiscoordenadorProximo(coordenador);
 
             // function obterDiaSemanaExtenso(abreviacao) {
