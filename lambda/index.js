@@ -311,7 +311,19 @@ const HorarioCoordenadorIntentHandler = {
      async handle(handlerInput) {
         try {
             const dados_usuario = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const speakOutput = `O coordenador ${dados_usuario.data[0].nome} está disponível na unidade ${dados_usuario.data[0].quadroHorario[0].descricao} todas as ${dados_usuario.data[0].quadroHorario[0].diaSemana},${dados_usuario.data[0].quadroHorario[1].diaSemana} e ${dados_usuario.data[0].quadroHorario[2].diaSemana}, das ${dados_usuario.data[0].quadroHorario[0].horaInicio}.`;
+            function removerSegundos(horario) {
+              const regexFormato = /^(\d{2}:\d{2}):\d{2}$/;
+              if (!regexFormato.test(horario)) {
+                console.error('Formato de horário inválido');
+                return horario;
+              }
+            
+              const horarioSemSegundos = horario.replace(/:\d{2}$/, '');
+            
+              return horarioSemSegundos;
+            }
+            const hora = removerSegundos(dados_usuario.data[0].quadroHorario[0].horaInicio)
+            const speakOutput = `O coordenador ${dados_usuario.data[0].nome} está disponível na unidade ${dados_usuario.data[0].quadroHorario[0].descricao} todas as ${hora}.`;
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
