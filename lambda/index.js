@@ -321,14 +321,6 @@ const HorarioCoordenadorIntentHandler = {
                 .getResponse();
 
         } catch (error) {
-            const speakOutput = 'Houve um erro no servidor.';
-            parTelaHome.ExibirTelaHome(handlerInput);
-
-            return handlerInput.responseBuilder
-                .speak(speakOutput)
-                .reprompt(speakOutput)
-                .getResponse();
-
         }
     }
 };
