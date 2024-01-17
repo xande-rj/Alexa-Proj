@@ -12,7 +12,7 @@ const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
 const filtrarNotas = require('./filterNotas.js');
-const diaMaisProximo = require('./filterdiacoordenador.js');
+const converterDiaSemana = require('./filterdiacoordenador.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -315,13 +315,13 @@ const HorarioCoordenadorIntentHandler = {
             
             const coordenadorInfo = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
             
-            console.log('Dados do coordenador:', coordenadorInfo.data[0]);
+            console.log('Dados do coordenador:', coordenadorInfo.data[0].quadroHorario);
     
-            const diaMaisProximoVar = diaMaisProximo(coordenadorInfo.data);
+            const converterDia = converterDiaSemana(coordenadorInfo.data[0].quadroHorario);
     
-            console.log('Dia mais próximo:', diaMaisProximoVar);
+            console.log('Dia mais próximo:', converterDiaSemana);
     
-            const speakOutput = `${diaMaisProximoVar}.`;
+            const speakOutput = `${converterDiaSemana}.`;
 
             exibirTelaCoordenador(handlerInput);
 
