@@ -303,29 +303,18 @@ const AulaPassadoIntentHandler = {
     }
 
 };
-const fetchApicoo = async (value) => {
-    const apiUrl = value;
-    try {
-        const response = await axios.get(apiUrl);
-        const dados = response.data;
-        return dados;
-    } catch (error) {
-        console.error('Erro ao fazer a requisição à API:', error);
-        throw error; // Rejeitar a promessa em caso de erro
-    }
-}
 
 const HorarioCoordenadorIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
-    async handle(handlerInput) {
 
+    async handle(handlerInput) {
         try {
-            const coordenador = await fetchApicoo('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+            const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
             
-            console.log('Dados do coordenador:', coordenador);
+            console.log('Dados do coordenador:', coordenador.data);
     
             const diaMaisProximoVar = diaMaisProximo(coordenador);
     
