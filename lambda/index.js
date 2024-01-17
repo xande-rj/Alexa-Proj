@@ -327,7 +327,7 @@ const HorarioCoordenadorIntentHandler = {
 
             const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao}, na ${diaExtenso}-feira, a partir das ${horaInicio} até as ${horaFim}.`;
             
-            exibirTelaCoordenador(handlerInput,coordenadorInfo,horaInicio,horaFim);
+            exibirTelaCoordenador(handlerInput,coordenadorInfo,diaExtenso,horaInicio,horaFim);
 
             return handlerInput.responseBuilder
                 .speak(speakOutput)

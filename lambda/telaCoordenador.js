@@ -18,11 +18,11 @@ function converterParaExtenso(diaSemanaAbreviado) {
     };
 
     const diasSemanaExtensoArray = diaSemanaAbreviado.map(abreviado => diasSemanaExtenso[abreviado] || 'Dia Inválido');
-    const disponibilidadeTexto = `Disponibilidade ${diasSemanaExtensoArray.join(', ')}`;
+    const disponibilidadeTexto = `ou nos seguintes dias  ${diasSemanaExtensoArray.join(', ')}`;
     return disponibilidadeTexto;
 }
 
-function exibirTelaCoordenador(handlerInput,coordenador,horaInicio,horaFim){
+function exibirTelaCoordenador(handlerInput,coordenador,diaExtenso,horaInicio,horaFim){
     
 const diaSemana = obterDiasSemanaDoQuadroHorario(coordenador.quadroHorario)
 const diaSemanaExtenso =converterParaExtenso(diaSemana)
@@ -65,7 +65,7 @@ const datasource = {
             },
             "locationText": {
                 "type": "PlainText",
-                "text": `Disponibilidade: ${diaSemanaExtenso}, das ${horaInicio} ate as ${horaFim}.`
+                "text": `Disponibilidade: ${diaExtenso}-feira, das ${horaInicio} ate as ${horaFim} ${diaSemanaExtenso} .`
             },
             "secondaryText": {
                 "type": "PlainText",
