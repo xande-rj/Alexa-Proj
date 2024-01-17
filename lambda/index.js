@@ -310,8 +310,8 @@ const HorarioCoordenadorIntentHandler = {
     },
      async handle(handlerInput) {
         try {
-            const dados_usuario = await fetchApi('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user');
-            const speakOutput = ` ${dados_usuario.data[0].data.aluno_nome},`;
+            const dados_usuario = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+            const speakOutput = ` ${dados_usuario.data[0].nome},`;
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
