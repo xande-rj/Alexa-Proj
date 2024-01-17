@@ -11,7 +11,6 @@ const parTelaHome = require('./telaHome.js');
 const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
-const filtrarNotas = require('./filterNotas.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -19,12 +18,6 @@ const removerSegundos = require('./fitrasegs.js');
 const diaMaisProximo = require('./filterdiacoordenador.js');
 const abreviacaoParaDiaExtenso = require('.//diaextenso.js');
 
-
-
-const fs = require('fs');
-const data = fs.readFileSync('./dados.json');
-const usuario = JSON.parse(data).usuarios;
-const aulas = JSON.parse(data);
 const axios = require('axios');
 
 const fetchApi = async (value) => {
@@ -397,26 +390,23 @@ const InscricaoIntentHandler = {
     }
 };
 
+
 const notasMateriasIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'notasMateriasIntent';
     },
     handle(handlerInput) {
+        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.unisuam.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
+        parTelaInscricao.ExibirTelaInscricao(handlerInput);
 
-        // const notas = filtrarNotas(usuario, handlerInput);
-
-        //let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
-        const speakOutput ='suas notas sao '
-        exibirTelaNota(handlerInput);
-        
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
             .getResponse();
     }
-
 };
+
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {
