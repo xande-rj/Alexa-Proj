@@ -312,10 +312,14 @@ const HorarioCoordenadorIntentHandler = {
      async handle(handlerInput) {
         try {
             const coordenadorResponse = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const coordenadorInfo =coordenadorResponse.data
-
-            const hora = removerSegundos(coordenadorInfo[0].quadroHorario[0].horaInicio)
-            const speakOutput = `O coordenador ${dados_usuario.data[0].nome} está disponível na unidade ${dados_usuario.data[0].quadroHorario[0].descricao} todas as ${hora}.`;
+            const coordenadorInfo = coordenadorResponse.data;
+            console.log(coordenadorInfo);
+            const hora = removerSegundos(coordenadorInfo[0].quadroHorario[0].horaInicio);
+            console.log(coordenadorInfo[0].quadroHorario[0].horaInicio);
+            console.log(hora);
+            
+            const speakOutput = `O coordenador ${coordenadorInfo[0].nome} está disponível na unidade ${coordenadorInfo[0].quadroHorario[0].descricao} todas as ${hora}.`;
+            
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
