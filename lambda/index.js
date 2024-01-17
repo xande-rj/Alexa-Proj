@@ -321,6 +321,7 @@ const HorarioCoordenadorIntentHandler = {
             const coordenadorInfo = coordenadorResponse.data[0];
 
             const horaInicio = removerSegundos(coordenadorInfo.quadroHorario[0].horaInicio);
+
             const horaFim = removerSegundos(coordenadorInfo.quadroHorario[0].horaFim);
 
             const diaProximo = diaMaisProximo(coordenadorResponse.data);
@@ -336,7 +337,7 @@ const HorarioCoordenadorIntentHandler = {
                 .reprompt(speakOutput)
                 .getResponse();
         } catch (error) {
-            const speakOutput = 'Você tentou acessar o app do Centro Universitário Augusto Motta sem estar logado, logue para acessá-lo.';
+            const speakOutput = 'Parece que o servidor esta passando por um problema tente pelo site ou mais tarde';
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
@@ -404,9 +405,10 @@ const notasMateriasIntentHandler = {
 
     handle(handlerInput) {
 
-        const notas = filtrarNotas(usuario, handlerInput);
+        // const notas = filtrarNotas(usuario, handlerInput);
 
-        let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
+        //let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
+        let speakOutput ='suas notas sao '
         exibirTelaNota(handlerInput);
 
         return handlerInput.responseBuilder
