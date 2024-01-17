@@ -319,11 +319,16 @@ const HorarioCoordenadorIntentHandler = {
             const coordenadorResponse = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
 
             const coordenadorInfo = coordenadorResponse.data;
+            console.log(coordenadorInfo)
 
             const hora = removerSegundos(coordenadorInfo[0].quadroHorario[0].horaInicio);
+            console.log(hora)
+
             const diaProximo = diaMaisProximo(coordenadorInfo);
+            console.log(diaProximo)
             
             const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
+            console.log(diaExtenso)
             const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao} , no dia ${diaExtenso}apartir ${hora}.`;
             
             parTelaHome.ExibirTelaHome(handlerInput);
