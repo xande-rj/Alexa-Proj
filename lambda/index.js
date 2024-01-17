@@ -399,8 +399,10 @@ const notasMateriasIntentHandler = {
     async handle(handlerInput) {
         try{
             const boletim = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+            const boletimNotas = boletim.data[0].notas[0];
+            console.log(boletimNotas);
+            const speakOutput = `Sua notas sao ${boletimNotas}`;
 
-            const speakOutput = `Sua notas sao ${boletim.data[0].notas[0]}`;
             parTelaInscricao.ExibirTelaInscricao(handlerInput);
     
             return handlerInput.responseBuilder
