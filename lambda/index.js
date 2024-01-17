@@ -319,13 +319,18 @@ const HorarioCoordenadorIntentHandler = {
             const coordenadorResponse = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
 
             const coordenadorInfo = coordenadorResponse.data[0];
+            console.log(coordenadorInfo);
 
             const diaProximoInfo = encontrarDiaMaisProximo(coordenadorResponse.quadroHorario);
-
+console.log(diaProximoInfo);
             const horaInicio = removerSegundos(diaProximoInfo.horaInicio);
+            console.log(horaInicio);
+
             const horaFim = removerSegundos(diaProximoInfo.horaFim);
+            console.log(horaFim);
 
             const diaExtenso = abreviacaoParaDiaExtenso(diaProximoInfo.diaSemana);
+            console.log(diaExtenso);
 
             const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${diaProximoInfo.descricao} , no dia ${diaExtenso} apartir das ${horaInicio} ate ${horaFim}`;
             
