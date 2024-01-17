@@ -324,11 +324,12 @@ const HorarioCoordenadorIntentHandler = {
             const hora = removerSegundos(coordenadorInfo[0].quadroHorario[0].horaInicio);
             console.log(hora)
 
-            const diaProximo = diaMaisProximo(coordenadorInfo);
-            console.log(diaProximo)
+            // const diaProximo = diaMaisProximo(coordenadorInfo);
+            // console.log(diaProximo)
             
-            const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
-            console.log(diaExtenso)
+            const diaExtenso = abreviacaoParaDiaExtenso(coordenadorInfo[0].quadroHorario[0].diaSemana);
+            console.log(diaExtenso);
+
             const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao} , no dia ${diaExtenso}apartir ${hora}.`;
             
             parTelaHome.ExibirTelaHome(handlerInput);
