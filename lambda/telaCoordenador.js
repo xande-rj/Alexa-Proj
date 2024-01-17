@@ -22,9 +22,9 @@ function converterParaExtenso(diaSemanaAbreviado) {
     return disponibilidadeTexto;
 }
 
-function exibirTelaCoordenador(handlerInput,horaInicio,horaFim){
+function exibirTelaCoordenador(handlerInput,coordenador,horaInicio,horaFim){
     
-const diaSemana = obterDiasSemanaDoQuadroHorario(handlerInput.quadroHorario)
+const diaSemana = obterDiasSemanaDoQuadroHorario(coordenador.quadroHorario)
 const diaSemanaExtenso =converterParaExtenso(diaSemana)
 
 const datasource = {
@@ -58,7 +58,7 @@ const datasource = {
         "textContent": {
             "primaryText": {
                 "type": "PlainText",
-                "text": `${handlerInput.nome}`,
+                "text": `${coordenador.nome}`,
             },
             "rating": {
                 "text": ""
@@ -69,7 +69,7 @@ const datasource = {
             },
             "secondaryText": {
                 "type": "PlainText",
-                "text": `e-mail: ${handlerInput.emails}`
+                "text": `e-mail: ${coordenador.emails}`
             }
         },
         "buttons": [
