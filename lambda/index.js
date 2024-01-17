@@ -308,19 +308,25 @@ const HorarioCoordenadorIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
-
-    async handle(handlerInput) {
-        try {            
+     async handle(handlerInput) {
+        try {
             const dados_usuario = await fetchApi('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user');
-            console.log(dados_usuario.data[0].data.aluno_nome)
-            const speakOutput = `${dados_usuario.data[0].data.aluno_nome}.`;
-            exibirTelaCoordenador(handlerInput);
+            const speakOutput = ` Bem vindo ${dados_usuario.data[0].data.aluno_nome}, ao Centro Universitário Augusto Motta. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?`;
+            parTelaHome.ExibirTelaHome(handlerInput);
+
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .reprompt(speakOutput)
+                .getResponse();
+        } catch (error) {
+            const speakOutput = 'Você tentou acessar o app do Centro Universitário Augusto Motta sem estar logado, logue para acessá-lo.';
+            parTelaHome.ExibirTelaHome(handlerInput);
+
             return handlerInput.responseBuilder
                 .speak(speakOutput)
                 .reprompt(speakOutput)
                 .getResponse();
 
-        } catch (error) {
         }
     }
 };
