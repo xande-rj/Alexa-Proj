@@ -3,13 +3,31 @@ const Alexa = require("ask-sdk-core");
 const DOCUMENT_ID = "telaCoordenador";
 
 const fs = require('fs');
-const data = fs.readFileSync('./dados.json');
-const usuarios = JSON.parse(data).usuarios;
-const filtrarCurso = require('./filterdiacoordenador.js');
+function obterDiasSemanaDoQuadroHorario(quadroHorario) {
+    return quadroHorario.map(item => item.diaSemana);
+}
 
-function exibirTelaCoordenador(handlerInput){
+function converterParaExtenso(diaSemanaAbreviado) {
+    const diasSemanaExtenso = {
+        'DOM': 'Domingo',
+        'SEG': 'Segunda-feira',
+        'TER': 'Terça-feira',
+        'QUA': 'Quarta-feira',
+        'QUI': 'Quinta-feira',
+        'SEX': 'Sexta-feira',
+        'SAB': 'Sábado'
+    };
+
+    const diasSemanaExtensoArray = diaSemanaAbreviado.map(abreviado => diasSemanaExtenso[abreviado] || 'Dia Inválido');
+    const disponibilidadeTexto = `Disponibilidade ${diasSemanaExtensoArray.join(', ')}`;
+    return disponibilidadeTexto;
+}
+
+function exibirTelaCoordenador(handlerInput,horaInicio,horaFim){
     
-const coordenador = filtrarCurso(usuarios, handlerInput);
+const coordenador = handlerInput;
+const diaSemana = obterDiasSemanaDoQuadroHorario(coordenador.quadroHorario)
+const diaSemanaExtenso =converterParaExtenso(diaSemana)
 
 const datasource = {
     "detailImageRightData": {
@@ -34,7 +52,7 @@ const datasource = {
             "largeSourceUrl": null,
             "sources": [
                 {
-                    "url": `${coordenador.coordenador.foto}`,
+                    "url": `https://img.freepik.com/fotos-gratis/empresario-experiente-na-sala-de-escritorio-funcionario-de-escritorio-de-conteudo-indiano-em-oculos-sorrindo-e-posando-com-as-maos-postas-conceito-de-negocios-gestao-e-corporacao_74855-11681.jpg?w=1380&t=st=1704820984~exp=1704821584~hmac=7df555be7a6917d4b0aebc1ead9d780f300e9d607b8b22dc131871f841b3034f`,
                     "size": "large"
                 }
             ]
@@ -42,18 +60,18 @@ const datasource = {
         "textContent": {
             "primaryText": {
                 "type": "PlainText",
-                "text": `${coordenador.coordenador.nome}`,
+                "text": `${coordenador.nome}`,
             },
             "rating": {
                 "text": ""
             },
             "locationText": {
                 "type": "PlainText",
-                "text": `Disponibilidade: Segunda e Sexta, das ${coordenador.coordenador.horario}.`
+                "text": `Disponibilidade: ${diaSemanaExtenso}, das ${horaInicio} ate as ${horaFim}.`
             },
             "secondaryText": {
                 "type": "PlainText",
-                "text": `e-mail: ${coordenador.coordenador.email}`
+                "text": `e-mail: ${coordenador.emails}`
             }
         },
         "buttons": [
