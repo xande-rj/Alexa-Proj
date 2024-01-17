@@ -2,7 +2,6 @@ const Alexa = require("ask-sdk-core");
 
 const DOCUMENT_ID = "telaCoordenador";
 
-const fs = require('fs');
 function obterDiasSemanaDoQuadroHorario(quadroHorario) {
     return quadroHorario.map(item => item.diaSemana);
 }
@@ -25,8 +24,7 @@ function converterParaExtenso(diaSemanaAbreviado) {
 
 function exibirTelaCoordenador(handlerInput,horaInicio,horaFim){
     
-const coordenador = handlerInput;
-const diaSemana = obterDiasSemanaDoQuadroHorario(coordenador.quadroHorario)
+const diaSemana = obterDiasSemanaDoQuadroHorario(handlerInput.quadroHorario)
 const diaSemanaExtenso =converterParaExtenso(diaSemana)
 
 const datasource = {
@@ -60,7 +58,7 @@ const datasource = {
         "textContent": {
             "primaryText": {
                 "type": "PlainText",
-                "text": `${coordenador.nome}`,
+                "text": `${handlerInput.nome}`,
             },
             "rating": {
                 "text": ""
@@ -71,7 +69,7 @@ const datasource = {
             },
             "secondaryText": {
                 "type": "PlainText",
-                "text": `e-mail: ${coordenador.emails}`
+                "text": `e-mail: ${handlerInput.emails}`
             }
         },
         "buttons": [
