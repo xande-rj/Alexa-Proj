@@ -4,6 +4,7 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
+// Função tela
 const exibirTelaAula = require('./telaAula.js');
 const exibirTelaNota = require('./telaNotas.js');
 const exibirTelaCoordenador = require('./telaCoordenador.js');
@@ -11,6 +12,9 @@ const parTelaHome = require('./telaHome.js');
 const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
+
+// Função alexa use
+const encontrarObjetoPorSemestre = require('./fitraNotasSemestre.js')
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -399,9 +403,12 @@ const notasMateriasIntentHandler = {
     async handle(handlerInput) {
         try{
             const boletim = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/boletim');
-            const boletimNotas = boletim.data[0].notas[0];
-            console.log(boletimNotas);
-            const speakOutput = `Sua notas sao ${boletimNotas}`;
+
+            const boletimInfo = encontrarObjetoPorSemestre(boletim.data,'2024-1');
+
+            console.log(boletimInfo);
+
+            const speakOutput = `Sua notas sao ${boletimInfo.notas[0]}`;
 
             parTelaInscricao.ExibirTelaInscricao(handlerInput);
     
