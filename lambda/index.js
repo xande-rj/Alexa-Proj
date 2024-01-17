@@ -311,12 +311,13 @@ const HorarioCoordenadorIntentHandler = {
     },
 
     async handle(handlerInput) {
-        try {
-            const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+        try {            
             
-            console.log('Dados do coordenador:', coordenador.data);
+            const coordenadorInfo = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+            
+            console.log('Dados do coordenador:', coordenadorInfo.data[0]);
     
-            const diaMaisProximoVar = diaMaisProximo(coordenador.data[0]);
+            const diaMaisProximoVar = diaMaisProximo(coordenadorInfo.data);
     
             console.log('Dia mais próximo:', diaMaisProximoVar);
     
