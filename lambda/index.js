@@ -15,7 +15,12 @@ const filtrarNotas = require('./filterNotas.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
-const removerSegundos = require('./fitrasegs.js')
+const removerSegundos = require('./fitrasegs.js');
+const diaMaisProximo = require('./filterdiacoordenador.js');
+const abreviacaoParaDiaExtenso = require('.//diaextenso.js');
+
+
+
 const fs = require('fs');
 const data = fs.readFileSync('./dados.json');
 const usuario = JSON.parse(data).usuarios;
@@ -312,13 +317,14 @@ const HorarioCoordenadorIntentHandler = {
      async handle(handlerInput) {
         try {
             const coordenadorResponse = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
+
             const coordenadorInfo = coordenadorResponse.data;
-            console.log(coordenadorInfo);
+
             const hora = removerSegundos(coordenadorInfo[0].quadroHorario[0].horaInicio);
-            console.log(coordenadorInfo[0].quadroHorario[0].horaInicio);
-            console.log(hora);
+            const diaProximo = diaMaisProximo(coordenadorInfo);
             
-            const speakOutput = `O coordenador ${coordenadorInfo[0].nome} está disponível na unidade ${coordenadorInfo[0].quadroHorario[0].descricao} todas as ${hora}.`;
+            const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
+            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao} , no dia ${diaExtenso}apartir ${hora}.`;
             
             parTelaHome.ExibirTelaHome(handlerInput);
 
