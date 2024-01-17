@@ -319,9 +319,9 @@ const HorarioCoordenadorIntentHandler = {
     
             const converterDia = converterDiaSemana(coordenadorInfo.data[0].quadroHorario);
     
-            console.log('Dia mais próximo:', converterDiaSemana);
+            console.log('Dia mais próximo:', converterDia);
     
-            const speakOutput = `${converterDiaSemana}.`;
+            const speakOutput = `${converterDia}.`;
 
             exibirTelaCoordenador(handlerInput);
 
