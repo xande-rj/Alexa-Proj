@@ -402,15 +402,14 @@ const notasMateriasIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'notasMateriasIntent';
     },
-
     handle(handlerInput) {
 
         // const notas = filtrarNotas(usuario, handlerInput);
 
         //let speakOutput = `Suas notas são, na A1 nota ${notas.notas.a1}, na A2 nota ${notas.notas.a2}, na A3 nota ${notas.notas.a3} e sua média final é ${notas.notas.media}.`;
-        let speakOutput ='suas notas sao '
+        const speakOutput ='suas notas sao '
         exibirTelaNota(handlerInput);
-
+        
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)

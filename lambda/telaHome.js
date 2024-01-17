@@ -25,7 +25,7 @@ const datasource = {
                 }
             },
             "logoUrl": "",
-            "hintText": "Universidade Lima, Compromisso para a vida toda!"
+            "hintText": "UNISUAM, Compromisso para a vida toda!"
         }
     }
 };
