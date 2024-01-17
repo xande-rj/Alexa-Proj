@@ -327,7 +327,7 @@ const HorarioCoordenadorIntentHandler = {
             
             const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
 
-            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao} , no dia ${diaExtenso} apartir das ${horaInicio} as ${horaFim}.`;
+            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao}, no dia ${diaExtenso}, a partir das ${horaInicio} até as ${horaFim}.`;
             
             parTelaHome.ExibirTelaHome(handlerInput);
 
