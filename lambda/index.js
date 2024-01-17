@@ -408,7 +408,7 @@ const notasMateriasIntentHandler = {
 
             console.log(boletimInfo);
 
-            const speakOutput = `Sua notas sao ${boletimInfo.notas[0]}`;
+            const speakOutput = `Sua notas são ${boletimInfo.colunas[0]} : ${boletimInfo.notas[0]},${boletimInfo.colunas[1]} : ${boletimInfo.notas[1]} e sua media final e : ${boletimInfo.notas[3]}`;
 
             parTelaInscricao.ExibirTelaInscricao(handlerInput);
     
