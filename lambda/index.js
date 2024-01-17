@@ -12,7 +12,6 @@ const parTelaPosGraduacao = require('./telaPosGraduacao.js');
 const parTelaMestrado = require('./telaMestrado.js');
 const parTelaInscricao = require('./telaInscricao.js');
 const filtrarNotas = require('./filterNotas.js');
-const converterDiaSemana = require('./filterdiacoordenador.js');
 const returnInfoAulas = require('./returnInfoAulas.js');
 const returnConsoleAula = require('./returnConsoleAula.js');
 const returnDiaSemana = require('./returnDiaSemana.js');
@@ -312,13 +311,10 @@ const HorarioCoordenadorIntentHandler = {
 
     async handle(handlerInput) {
         try {            
-            const coordenador = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            const coordenadorInfo=coordenador.data[0].nome
-            console.log(coordenadorInfo)
-            const speakOutput = `${coordenadorInfo}.`;
-
+            const dados_usuario = await fetchApi('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user');
+            console.log(dados_usuario)
+            const speakOutput = `${dados_usuario}.`;
             exibirTelaCoordenador(handlerInput);
-
             return handlerInput.responseBuilder
                 .speak(speakOutput)
                 .reprompt(speakOutput)
