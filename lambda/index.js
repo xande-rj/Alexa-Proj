@@ -325,7 +325,7 @@ const HorarioCoordenadorIntentHandler = {
             
             const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
 
-            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao}, no dia ${diaExtenso}, a partir das ${horaInicio} até as ${horaFim}.`;
+            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao}, na ${diaExtenso}-feira, a partir das ${horaInicio} até as ${horaFim}.`;
             
             parTelaHome.ExibirTelaHome(handlerInput);
 
@@ -406,20 +406,15 @@ const notasMateriasIntentHandler = {
 
             const boletimInfo = encontrarObjetoPorSemestre(boletim.data,'2024-1');
 
-            console.log(boletimInfo);
-
             const speakOutput = `Sua notas são ${boletimInfo.colunas[0]} : ${boletimInfo.notas[0]},${boletimInfo.colunas[1]} : ${boletimInfo.notas[1]} e sua media final e : ${boletimInfo.notas[3]}`;
 
-            parTelaInscricao.ExibirTelaInscricao(handlerInput);
-    
             return handlerInput.responseBuilder
                 .speak(speakOutput)
                 .reprompt(speakOutput)
                 .getResponse();
         }
         catch(err){
-            const speakOutput = `erro ao acessar o servidor por favor tente mais tarde obrigado. ${err}`;
-            parTelaInscricao.ExibirTelaInscricao(handlerInput);
+            const speakOutput = `erro ao acessar o servidor por favor tente mais tarde obrigado.`;
     
             return handlerInput.responseBuilder
                 .speak(speakOutput)

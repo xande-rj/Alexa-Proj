@@ -2,16 +2,16 @@ const Alexa = require("ask-sdk-core");
 
 const DOCUMENT_ID = "telaAula";
 
-const fs = require('fs');
-const data = fs.readFileSync('./dados.json');
-const usuario = JSON.parse(data).usuarios;
-const aulas = JSON.parse(data);
-const returnInfoAulas = require('./returnInfoAulas.js');
+const removerSegundos = require('./fitrasegs.js');
 
 function exibirTelaAula(handlerInput, materiasComAulasNoDia){
    
+
   let datasource;
   if (materiasComAulasNoDia.length === 1) {
+    const horaInicio = removerSegundos(materiasComAulasNoDia[0].hora_inicio);
+
+    const horaFim = removerSegundos(materiasComAulasNoDia[0].hora_fim);
     datasource = {
       "textListData": {
         "type": "object",
@@ -30,7 +30,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
         "title": "Aula do dia",
         "listItems": [
             {
-                "primaryText": `Aula: ${materiasComAulasNoDia[0].nome}`,
+                "primaryText": `Aula: ${materiasComAulasNoDia[0].disciplina_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[0].primaryText}"
@@ -38,7 +38,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Professor: ${materiasComAulasNoDia[0].professor}`,
+                "primaryText": `Professor: ${materiasComAulasNoDia[0].professor_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[1].primaryText}"
@@ -46,7 +46,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${materiasComAulasNoDia[0].horario}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
@@ -54,7 +54,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Sala: ${materiasComAulasNoDia[0].sala}`,
+                "primaryText": `Sala: ${materiasComAulasNoDia[0].sala_label}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[3].primaryText}"
@@ -66,6 +66,9 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
       }
     }
   } else if (materiasComAulasNoDia.length === 2) {
+    const horaInicio = removerSegundos(materiasComAulasNoDia[1].hora_inicio);
+
+    const horaFim = removerSegundos(materiasComAulasNoDia[1].hora_fim);
      datasource = {
       "textListData": {
         "type": "object",
@@ -84,7 +87,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
         "title": "Aula do dia",
         "listItems": [
             {
-                "primaryText": `Aula: ${materiasComAulasNoDia[0].nome}`,
+                "primaryText": `Aula: ${materiasComAulasNoDia[0].disciplina_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[0].primaryText}"
@@ -92,7 +95,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Professor: ${materiasComAulasNoDia[0].professor}`,
+                "primaryText": `Professor: ${materiasComAulasNoDia[0].professor_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[1].primaryText}"
@@ -100,7 +103,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${materiasComAulasNoDia[0].horario}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
@@ -108,7 +111,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Sala: ${materiasComAulasNoDia[0].sala}`,
+                "primaryText": `Sala: ${materiasComAulasNoDia[0].sala_label}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[3].primaryText}"
@@ -116,7 +119,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Aula: ${materiasComAulasNoDia[1].nome}`,
+                "primaryText": `Aula: ${materiasComAulasNoDia[1].disciplina_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[0].primaryText}"
@@ -124,7 +127,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Professor: ${materiasComAulasNoDia[1].professor}`,
+                "primaryText": `Professor: ${materiasComAulasNoDia[1].professor_nome}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[1].primaryText}"
@@ -132,7 +135,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[1].dia_semana} das ${materiasComAulasNoDia[1].horario}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[1].dia_semana} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
@@ -140,7 +143,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Sala: ${materiasComAulasNoDia[1].sala}`,
+                "primaryText": `Sala: ${materiasComAulasNoDia[1].sala_label}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[3].primaryText}"
