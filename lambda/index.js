@@ -316,7 +316,7 @@ const HorarioCoordenadorIntentHandler = {
             
             console.log('Dados do coordenador:', coordenador.data);
     
-            const diaMaisProximoVar = diaMaisProximo(coordenador);
+            const diaMaisProximoVar = diaMaisProximo(coordenador.data);
     
             console.log('Dia mais próximo:', diaMaisProximoVar);
     
