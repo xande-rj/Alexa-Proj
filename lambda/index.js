@@ -312,8 +312,8 @@ const HorarioCoordenadorIntentHandler = {
     async handle(handlerInput) {
         try {            
             const dados_usuario = await fetchApi('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user');
-            console.log(dados_usuario)
-            const speakOutput = `${dados_usuario}.`;
+            console.log(dados_usuario.data[0].data.aluno_nome)
+            const speakOutput = `${dados_usuario.data[0].data.aluno_nome}.`;
             exibirTelaCoordenador(handlerInput);
             return handlerInput.responseBuilder
                 .speak(speakOutput)
