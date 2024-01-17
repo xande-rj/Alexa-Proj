@@ -396,14 +396,27 @@ const notasMateriasIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'notasMateriasIntent';
     },
-    handle(handlerInput) {
-        const speakOutput = 'Você precisa ter concluído o ensino médio para realizar a inscrição. Tendo atendido estes requisitos, inscreva-se pelo site www.unisuam.edu.br, ou ligue para o telefone 21 3882-9797. Ainda também é possível inscrever se pelo Whatsapp através da operação coruja no número 21 996-807-990.';
-        parTelaInscricao.ExibirTelaInscricao(handlerInput);
+    async handle(handlerInput) {
+        try{
+            const boletim = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
-            .getResponse();
+            const speakOutput = `Sua notas sao ${boletim.data[0].notas[0]}`;
+            parTelaInscricao.ExibirTelaInscricao(handlerInput);
+    
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .reprompt(speakOutput)
+                .getResponse();
+        }
+        catch(err){
+            const speakOutput = `erro ao acessar o servidor por favor tente mais tarde obrigado. ${err}`;
+            parTelaInscricao.ExibirTelaInscricao(handlerInput);
+    
+            return handlerInput.responseBuilder
+                .speak(speakOutput)
+                .reprompt(speakOutput)
+                .getResponse();
+        }
     }
 };
 
