@@ -314,14 +314,8 @@ const HorarioCoordenadorIntentHandler = {
         try {            
             
             const coordenadorInfo = await fetchApi('https://65a53f6952f07a8b4a3eb0f4.mockapi.io/api/coordenador');
-            
-            console.log('Dados do coordenador:', coordenadorInfo.data[0].quadroHorario);
-    
-            const converterDia = converterDiaSemana(coordenadorInfo.data[0].quadroHorario);
-    
-            console.log('Dia mais próximo:', converterDia);
-    
-            const speakOutput = `${converterDia}.`;
+
+            const speakOutput = `${coordenadorInfo.data[0].nome}.`;
 
             exibirTelaCoordenador(handlerInput);
 
