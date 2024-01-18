@@ -2,15 +2,8 @@ const Alexa = require("ask-sdk-core");
 
 const DOCUMENT_ID = "telaNotas";
 
-const fs = require('fs');
-const data = fs.readFileSync('./dados.json');
-const usuarios = JSON.parse(data).usuarios;
+function exibirTelaNota(handlerInput,notaBoletim,colunaBoletim,boletim){
 
-const filtrarNotas = require('./filterNotas.js');
-
-function exibirTelaNota(handlerInput){
-
-const notas = filtrarNotas(usuarios, handlerInput);
     
 const datasource = {
     
@@ -18,12 +11,11 @@ const datasource = {
         type: "object",
         properties: {
             backgroundImage: "https://i.pinimg.com/736x/85/5c/54/855c54f81ab1836750a28580715482e9.jpg",
-            titleText: `${notas.nome}`,
+            titleText: `${boletim.disciplina}`,
             choices: [
-                `A1: ${notas.notas.a1}`,
-                `A2: ${notas.notas.a2}`, 
-                `A3: ${notas.notas.a3}`,
-                `Média: ${notas.notas.media}`
+                `${colunaBoletim[0]}: ${notaBoletim[0]}`,
+                `${colunaBoletim[1]}: ${notaBoletim[1]}`, 
+                `${colunaBoletim[3]}: ${notaBoletim[3]}`,
             ],
             choiceListType: "",
             headerAttributionImage: "https://www.unisuam.edu.br/wp-content/themes/unisuam/images/logo.png",
