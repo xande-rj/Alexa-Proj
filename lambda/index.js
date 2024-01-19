@@ -21,7 +21,7 @@ const returnDiaSemana = require('./returnDiaSemana.js');
 const removerSegundos = require('./fitrasegs.js');
 const diaMaisProximo = require('./filterdiacoordenador.js');
 const abreviacaoParaDiaExtenso = require('.//diaextenso.js');
-
+const unidadeExtenso = require('./unidadeextenso.js')
 const axios = require('axios');
 
 const fetchApi = async (value) => {
@@ -325,7 +325,9 @@ const HorarioCoordenadorIntentHandler = {
             
             const diaExtenso = abreviacaoParaDiaExtenso(diaProximo);
 
-            const speakOutput = `O coordenador ${coordenadorInfo.nome} está disponível na unidade ${coordenadorInfo.quadroHorario[0].descricao}, na ${diaExtenso}-feira, a partir das ${horaInicio} até as ${horaFim}.`;
+            const unidade = unidadeExtenso(coordenadorInfo.quadroHorario[0].descricao)
+
+            const speakOutput = `O coordenador ${coordenadorInfo.nome} encontra-se disponível na unidade ${unidade} às ${horaInicio} até ${horaFim} durante a ${diaExtenso}-feiras.`;
             
             exibirTelaCoordenador(handlerInput,coordenadorInfo,diaExtenso,horaInicio,horaFim);
 
@@ -407,9 +409,8 @@ const notasMateriasIntentHandler = {
             const boletimInfo = encontrarObjetoPorSemestre(boletim.data,'2024-1');
             const colunaBoletim= boletimInfo.colunas
             const notaBoletim = boletimInfo.notas
-            
-                const speakOutput = `Sua notas são ${colunaBoletim[0]} : ${notaBoletim[0]},${colunaBoletim[1]} : ${notaBoletim[1]} e sua media final e : ${notaBoletim[3]}`;
 
+                const speakOutput = `Suas notas são ${colunaBoletim[0]} : ${notaBoletim[0]}, ${colunaBoletim[1]} : ${notaBoletim[1]} resultando em uma média final de : ${notaBoletim[3]}`;
             exibirTelaNota(handlerInput,notaBoletim,colunaBoletim,boletimInfo)
             return handlerInput.responseBuilder
                 .speak(speakOutput)
