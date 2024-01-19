@@ -46,7 +46,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${horaInicio} as ${horaFim}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_descricao} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
@@ -103,7 +103,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_semana} das ${horaInicio} as ${horaFim}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[0].dia_descricao} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
@@ -135,7 +135,7 @@ function exibirTelaAula(handlerInput, materiasComAulasNoDia){
                 ]
             },
             {
-                "primaryText": `Data e hora: ${materiasComAulasNoDia[1].dia_semana} das ${horaInicio} as ${horaFim}`,
+                "primaryText": `Data e hora: ${materiasComAulasNoDia[1].dia_descricao} das ${horaInicio} as ${horaFim}`,
                 "primaryAction": [
                     {
                         "value": "${payload.textListData.listItems[2].primaryText}"
