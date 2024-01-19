@@ -1,3 +1,4 @@
+const removerSegundos = require('./fitrasegs.js');
   
  function returnConsoleAula(materiasComAulasNoDia, tempo) {
   if (materiasComAulasNoDia.length === 0) {
@@ -6,11 +7,12 @@
 
   const frases = materiasComAulasNoDia.map(aula => {
     const { dia_descricao, disciplina_nome, hora_inicio,hora_fim, sala_label,bloco_label, professor_nome } = aula;
+
     const acao = tempo ? 'terá' : 'teve';
     return {
       dia_descricao,
       acao,
-      frase: `aula de ${disciplina_nome} das ${hora_inicio} as ${hora_fim} horas na sala ${sala_label} do bloco ${bloco_label} com ${professor_nome}`
+      frase: `aula de ${disciplina_nome} das ${removerSegundos(hora_inicio)} as ${removerSegundos(hora_fim)} horas na sala ${sala_label} do bloco ${bloco_label} com ${professor_nome}`
     };
   });
 

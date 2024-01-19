@@ -407,11 +407,7 @@ const notasMateriasIntentHandler = {
             const boletimInfo = encontrarObjetoPorSemestre(boletim.data,'2024-1');
             const colunaBoletim= boletimInfo.colunas
             const notaBoletim = boletimInfo.notas
-
-            // if(notaBoletim[2]==''){
-            //     const speakOutput = `Sua notas são ${colunaBoletim[0]} : ${notaBoletim[0]},${colunaBoletim[1]} : ${notaBoletim[1]} e sua media final e : ${notaBoletim[3]}`;
-            //     return speakOutput
-            // }
+            
                 const speakOutput = `Sua notas são ${colunaBoletim[0]} : ${notaBoletim[0]},${colunaBoletim[1]} : ${notaBoletim[1]} e sua media final e : ${notaBoletim[3]}`;
 
             exibirTelaNota(handlerInput,notaBoletim,colunaBoletim,boletimInfo)
