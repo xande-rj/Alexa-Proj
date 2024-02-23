@@ -22,19 +22,8 @@ const removerSegundos = require('./fitrasegs.js');
 const diaMaisProximo = require('./filterdiacoordenador.js');
 const abreviacaoParaDiaExtenso = require('.//diaextenso.js');
 const unidadeExtenso = require('./unidadeextenso.js')
-const axios = require('axios');
+const Api = require('./api.js')
 
-const fetchApi = async (value) => {
-    const apiUrl = value;
-    try {
-        const response = await axios.get(apiUrl);
-        const dados = response;
-        return dados;
-    } catch (error) {
-        console.error('Erro ao fazer a requisição à API:', error);
-        throw error; // Rejeitar a promessa em caso de erro
-    }
-}
 
 
 const LaunchRequestHandler = {
@@ -42,9 +31,11 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     async handle(handlerInput) {
+        const api = new Api('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user')
         try {
-            const dados_usuario = await fetchApi('https://659ecf0447ae28b0bd36be64.mockapi.io/api/user');
-            const speakOutput = ` Bem vindo ${dados_usuario.data[0].data.aluno_nome}, ao Centro Universitário Augusto Motta. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?`;
+            const dados = await api.callApi()
+            const dadosinfo = await api.nomeUser()
+            const speakOutput = ` Bem vindo ${dadosinfo}, ao Centro Universitário Augusto Motta. Compromisso para a vida toda. Aqui você poderá acessar o seu calendário de aulas, o boletim de notas, horário do seu coordenador e mais. O que você gostaria ?`;
             parTelaHome.ExibirTelaHome(handlerInput);
 
             return handlerInput.responseBuilder
